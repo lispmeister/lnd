@@ -584,8 +584,7 @@ var (
 
 		bitcoinTestnetGenesis: {
 			{
-				"test.nodes.lightning.directory",
-				"soa.nodes.lightning.directory",
+				"lseed", // we only query the local dockerized lseed instance
 			},
 		},
 
