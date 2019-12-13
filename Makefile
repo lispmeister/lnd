@@ -34,7 +34,7 @@ LINT_COMMIT := v1.18.0
 GOACC_COMMIT := ddc355013f90fea78d83d3a6c71f1d37ac07ecd5
 
 DEPGET := cd /tmp && GO111MODULE=on go get -v
-GOBUILD := GO111MODULE=on go build -v
+GOBUILD := GO111MODULE=on CGO_ENABLED=0 go build -v
 GOINSTALL := GO111MODULE=on CGO_ENABLED=0 go install -v
 GOTEST := GO111MODULE=on go test 
 
