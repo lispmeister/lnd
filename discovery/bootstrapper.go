@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"crypto/rand"
 	"crypto/sha256"
-	"errors"
 	"fmt"
 	prand "math/rand"
 	"net"
@@ -72,7 +71,7 @@ func MultiSourceBootstrap(ignore map[autopilot.NodeID]struct{}, numAddrs uint32,
 		// If we still need additional addresses, then we'll compute
 		// the number of address remaining that we need to fetch.
 		numAddrsLeft := numAddrs - uint32(len(addrs))
-		log.Tracef("Querying for %v addresses", numAddrsLeft)
+		log.Debugf("Querying for %v addresses", numAddrsLeft)
 		netAddrs, err := bootstrapper.SampleNodeAddrs(numAddrsLeft, ignore)
 		if err != nil {
 			// If we encounter an error with a bootstrapper, then
@@ -87,7 +86,8 @@ func MultiSourceBootstrap(ignore map[autopilot.NodeID]struct{}, numAddrs uint32,
 	}
 
 	if len(addrs) == 0 {
-		return nil, errors.New("no addresses found")
+		// return nil, errors.New("no addresses found")
+		panic(fmt.Sprintf("No bootstrap addresses found!"))
 	}
 
 	log.Infof("Obtained %v addrs to bootstrap network with", len(addrs))
