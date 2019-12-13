@@ -81,7 +81,7 @@ func MultiSourceBootstrap(ignore map[autopilot.NodeID]struct{}, numAddrs uint32,
 				bootstrapper.Name(), err)
 			continue
 		}
-
+		log.Debugf("Bootstrapper response: %v", netAddrs)
 		addrs = append(addrs, netAddrs...)
 	}
 
@@ -391,15 +391,15 @@ search:
 		primarySeed := dnsSeedTuple[0]
 		_, addrs, err := d.net.LookupSRV("nodes", "tcp", primarySeed)
 		if err != nil {
-			log.Tracef("Unable to lookup SRV records via "+
+			log.Debugf("Unable to lookup SRV records via "+
 				"primary seed (%v): %v", primarySeed, err)
 
-			log.Trace("Falling back to secondary")
+			log.Debugf("Falling back to secondary")
 
 			// If the host of the secondary seed is blank, then
 			// we'll bail here as we can't proceed.
 			if dnsSeedTuple[1] == "" {
-				log.Tracef("DNS seed %v has no secondary, "+
+				log.Debugf("DNS seed %v has no secondary, "+
 					"skipping fallback", primarySeed)
 				continue
 			}
@@ -412,15 +412,15 @@ search:
 				soaShim, primarySeed,
 			)
 			if err != nil {
-				log.Tracef("Unable to query fall "+
+				log.Debugf("Unable to query fall "+
 					"back dns seed (%v): %v", soaShim, err)
 				continue
 			}
 
-			log.Tracef("Successfully queried fallback DNS seed")
+			log.Debugf("Successfully queried fallback DNS seed")
 		}
 
-		log.Tracef("Retrieved SRV records from dns seed: %v",
+		log.Debugf("Retrieved SRV records from dns seed: %v",
 			newLogClosure(func() string {
 				return spew.Sdump(addrs)
 			}),
@@ -444,12 +444,12 @@ search:
 			}
 
 			if len(addrs) == 0 {
-				log.Tracef("No addresses for %v, skipping",
+				log.Debugf("No addresses for %v, skipping",
 					bechNodeHost)
 				continue
 			}
 
-			log.Tracef("Attempting to convert: %v", bechNodeHost)
+			log.Debugf("Attempting to convert: %v", bechNodeHost)
 
 			// If the host isn't correctly formatted, then we'll
 			// skip it.

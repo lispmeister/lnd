@@ -584,10 +584,10 @@ var (
 
 		bitcoinTestnetGenesis: {
 			{
-				"172.18.0.4", // we only query the local dockerized lseed instance
+				"lseed", // we only query the local dockerized lseed instance
 			},
 			{
-				"172.18.0.4", // we only query the local dockerized lseed instance
+				"lseed", // we only query the local dockerized lseed instance
 			},
 		},
 
