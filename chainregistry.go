@@ -584,8 +584,8 @@ var (
 
 		bitcoinTestnetGenesis: {
 			{
-				"lseed",
-				"lseed",
+				"test.lseed.directory",
+				"soa.lseed.directory",
 				// "test.nodes.lightning.directory",
 				// "soa.nodes.lightning.directory",
 			},
