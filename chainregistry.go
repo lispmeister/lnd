@@ -584,10 +584,10 @@ var (
 
 		bitcoinTestnetGenesis: {
 			{
-				"test.wumbo.link",
-				"soa.wumbo.link",
-				// "test.nodes.lightning.directory",
-				// "soa.nodes.lightning.directory",
+				// "test.wumbo.link",
+				// "soa.wumbo.link",
+				"test.nodes.lightning.directory",
+				"soa.nodes.lightning.directory",
 			},
 		},
 
